@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - U La Salle</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>Universidad La Salle</h1>
+            </div>
+            <nav class="nav">
+                <a href="{{ url_for('index') }}" class="nav-link">Inicio</a>
+                <a href="{{ url_for('contacto') }}" class="nav-link active">Contacto</a>
+            </nav>
+        </header>
+
+        <main class="main">
+            <section class="contact-section">
+                <div class="contact-header">
+                    <h2>Contáctanos</h2>
+                    <p>¿Tienes alguna pregunta o necesitas información? Estamos aquí para ayudarte.</p>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-form-container">
+                        <form class="contact-form" method="POST" action="{{ url_for('contacto') }}">
+                            <div class="form-group">
+                                <label for="nombre">
+                                    <i class="fas fa-user"></i>
+                                    Nombre completo *
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="nombre" 
+                                    name="nombre" 
+                                    required 
+                                    placeholder="Ingresa tu nombre completo"
+                                    value="{{ request.form.nombre if request.form.nombre else '' }}"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">
+                                    <i class="fas fa-envelope"></i>
+                                    Correo electrónico *
+                                </label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    required 
+                                    placeholder="tu@email.com"
+                                    value="{{ request.form.email if request.form.email else '' }}"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="telefono">
+                                    <i class="fas fa-phone"></i>
+                                    Teléfono
+                                </label>
+                                <input 
+                                    type="tel" 
+                                    id="telefono" 
+                                    name="telefono" 
+                                    placeholder="(555) 123-4567"
+                                    value="{{ request.form.telefono if request.form.telefono else '' }}"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="mensaje">
+                                    <i class="fas fa-comment"></i>
+                                    Mensaje *
+                                </label>
+                                <textarea 
+                                    id="mensaje" 
+                                    name="mensaje" 
+                                    required 
+                                    rows="5" 
+                                    placeholder="Escribe tu mensaje aquí..."
+                                >{{ request.form.mensaje if request.form.mensaje else '' }}</textarea>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Enviar mensaje
+                                </button>
+                                <button type="reset" class="btn btn-secondary">
+                                    <i class="fas fa-undo"></i>
+                                    Limpiar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="contact-info">
+                        <div class="info-card">
+                            <h3>Información de contacto</h3>
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h4>Dirección</h4>
+                                    <p>123 Avenida Universidad<br>Ciudad, Estado 12345</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <h4>Teléfono</h4>
+                                    <p>+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <h4>Email</h4>
+                                    <p>info@ulasalle.edu</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <h4>Horarios</h4>
+                                    <p>Lunes - Viernes: 8:00 AM - 6:00 PM<br>
+                                    Sábados: 9:00 AM - 2:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="social-links">
+                            <h4>Síguenos en redes sociales</h4>
+                            <div class="social-icons">
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Universidad La Salle</h4>
+                    <p>Formando profesionales del futuro</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-envelope"></i> info@ulasalle.edu</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces</h4>
+                    <a href="{{ url_for('index') }}">Inicio</a>
+                    <a href="{{ url_for('contacto') }}">Contacto</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Universidad La Salle. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Mostrar mensajes flash -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="flash flash-{{ category }}">
+                        <i class="fas fa-{{ 'check-circle' if category == 'success' else 'exclamation-circle' }}"></i>
+                        {{ message }}
+                        <button class="flash-close" onclick="this.parentElement.remove()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <script>
+        // Auto-hide flash messages after 5 seconds
+        setTimeout(function() {
+            const flashMessages = document.querySelectorAll('.flash');
+            flashMessages.forEach(function(flash) {
+                flash.style.opacity = '0';
+                setTimeout(function() {
+                    flash.remove();
+                }, 300);
+            });
+        }, 5000);
+
+        // Form validation
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            const nombre = document.getElementById('nombre').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const mensaje = document.getElementById('mensaje').value.trim();
+
+            if (!nombre || !email || !mensaje) {
+                e.preventDefault();
+                alert('Por favor, completa todos los campos obligatorios.');
+                return;
+            }
+
+            // Basic email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                e.preventDefault();
+                alert('Por favor, ingresa un correo electrónico válido.');
+                return;
+            }
+        });
+    </script>
+</body>
+</html>
