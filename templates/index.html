@@ -2,134 +2,25 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>U La Salle - Formulario de Contacto</title>
+    <title>Inicio - U La Salle</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <div class="logo">
-                <i class="fas fa-graduation-cap"></i>
-                <h1>Universidad La Salle</h1>
-            </div>
-            <nav class="nav">
-                <a href="{{ url_for('index') }}" class="nav-link active">Inicio</a>
-                <a href="{{ url_for('contacto') }}" class="nav-link">Contacto</a>
-            </nav>
-        </header>
+    <header>
+        <h1>Universidad de La Salle</h1>
+        <nav>
+            <a href="/">Inicio</a>
+            <a href="/contacto">Contacto</a>
+        </nav>
+    </header>
 
-        <main class="main">
-            <section class="hero">
-                <div class="hero-content">
-                    <h2>Bienvenido a U La Salle</h2>
-                    <p class="hero-text">
-                        Somos una institución comprometida con la excelencia académica y la formación integral de nuestros estudiantes. 
-                        Nuestra misión es formar profesionales competentes y ciudadanos responsables.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="{{ url_for('contacto') }}" class="btn btn-primary">
-                            <i class="fas fa-envelope"></i>
-                            Contáctanos
-                        </a>
-                        <a href="#about" class="btn btn-secondary">
-                            <i class="fas fa-info-circle"></i>
-                            Conoce más
-                        </a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <i class="fas fa-university"></i>
-                </div>
-            </section>
+    <main>
+        <h2>Bienvenido al Formulario de Contacto U La Salle</h2>
+        <p>En esta aplicación podrás enviarnos tus mensajes y comentarios.</p>
+    </main>
 
-            <section id="about" class="about">
-                <div class="about-content">
-                    <h3>¿Por qué elegir U La Salle?</h3>
-                    <div class="features">
-                        <div class="feature">
-                            <i class="fas fa-book"></i>
-                            <h4>Excelencia Académica</h4>
-                            <p>Programas de estudio actualizados y profesores altamente calificados.</p>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-users"></i>
-                            <h4>Comunidad Estudiantil</h4>
-                            <p>Un ambiente inclusivo y diverso que enriquece tu experiencia universitaria.</p>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-trophy"></i>
-                            <h4>Reconocimiento</h4>
-                            <p>Institución con años de trayectoria y reconocimiento en la educación superior.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="contact-preview">
-                <div class="contact-preview-content">
-                    <h3>¿Tienes alguna pregunta?</h3>
-                    <p>Nuestro equipo está aquí para ayudarte. Contáctanos y te responderemos a la brevedad.</p>
-                    <a href="{{ url_for('contacto') }}" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i>
-                        Enviar mensaje
-                    </a>
-                </div>
-            </section>
-        </main>
-
-        <footer class="footer">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Universidad La Salle</h4>
-                    <p>Formando profesionales del futuro</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Contacto</h4>
-                    <p><i class="fas fa-envelope"></i> info@ulasalle.edu</p>
-                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Enlaces</h4>
-                    <a href="{{ url_for('index') }}">Inicio</a>
-                    <a href="{{ url_for('contacto') }}">Contacto</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Universidad La Salle. Todos los derechos reservados.</p>
-            </div>
-        </footer>
-    </div>
-
-    <!-- Mostrar mensajes flash -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <div class="flash-messages">
-                {% for category, message in messages %}
-                    <div class="flash flash-{{ category }}">
-                        <i class="fas fa-{{ 'check-circle' if category == 'success' else 'exclamation-circle' }}"></i>
-                        {{ message }}
-                        <button class="flash-close" onclick="this.parentElement.remove()">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endwith %}
-
-    <script>
-        // Auto-hide flash messages after 5 seconds
-        setTimeout(function() {
-            const flashMessages = document.querySelectorAll('.flash');
-            flashMessages.forEach(function(flash) {
-                flash.style.opacity = '0';
-                setTimeout(function() {
-                    flash.remove();
-                }, 300);
-            });
-        }, 5000);
-    </script>
+    <footer>
+        <p>© 2025 Universidad de La Salle</p>
+    </footer>
 </body>
 </html>
