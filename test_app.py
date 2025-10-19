@@ -1,10 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import sqlite3
 import os
-from datetime import datetime
 
 app = Flask(__name__)
-app.secret_key = 'tu_clave_secreta_aqui'  # Cambia esto por una clave secreta real
+app.secret_key = 'tu_clave_secreta_aqui'
 
 # Configuración de la base de datos
 DATABASE = 'contactos.db'
@@ -28,7 +27,6 @@ def init_db():
 
 @app.route('/')
 def index():
-    """Página principal"""
     return render_template('index.html')
 
 @app.route('/contacto', methods=['GET', 'POST'])
@@ -65,22 +63,8 @@ def contacto():
     
     return render_template('contacto.html')
 
-@app.route('/admin')
-def admin():
-    """Página de administración para ver los contactos (opcional)"""
-    try:
-        conn = sqlite3.connect(DATABASE)
-        cursor = conn.cursor()
-        cursor.execute('SELECT * FROM contactos ORDER BY fecha DESC')
-        contactos = cursor.fetchall()
-        conn.close()
-        
-        return render_template('admin.html', contactos=contactos)
-    except Exception as e:
-        flash('Error al cargar los contactos.', 'error')
-        return redirect(url_for('index'))
-
 if __name__ == '__main__':
     init_db()
-    port = int(os.environ.get('PORT', 5000))
-    app.run(debug=False, host='0.0.0.0', port=port)
+    print("Iniciando servidor Flask...")
+    print("Ve a: http://localhost:5000")
+    app.run(debug=True, host='0.0.0.0', port=5000)
